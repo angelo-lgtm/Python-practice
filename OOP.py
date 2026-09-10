@@ -12,6 +12,12 @@ class Owner:
 			self.name = name
 			self._address = address
 			self. phone_number = contact_number
+   
+	def get_address(self):
+			return self._address
+
+	def set_address(self, address):
+			self._address = address
 		
 owner = Owner("Chris", "123 St.Peter Square", "998-9384-03")	
 dog = Dog("Max", "Bulldog", owner)
