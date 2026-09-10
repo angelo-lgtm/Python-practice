@@ -18,6 +18,23 @@ class User:
         else:
             print("Unreal email!!")
             
+class Employee:
+    #Static attribute 
+    e_count = 0
+    
+    def __init__(self, user, department):
+            self.user = user
+            self.department = department
+            #Use of static attribute within a class
+            Employee.e_count+=1
+            
+    def description(self):
+            print(f"Name of Employee: {self.user.name}\nEmail: {self.user.email}\n")
+            
 user = User("Angelo", "20-03-2009", "nshutijoseph34@gmai.com")
 user.email = "bana@gmail.com"
 print(user.email)
+
+employee = Employee(user, "IT")
+employee.description()
+print(f"Total number of employees: {Employee.e_count}")
