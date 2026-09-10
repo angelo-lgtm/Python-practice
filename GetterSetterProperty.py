@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 class User:
     def __init__(self, name, dob, email):
@@ -14,9 +14,10 @@ class User:
     def email(self, new_email):
         if "@" in new_email:
             self._email = new_email
+            print(f"Email formatted at {datetime.now()}")
         else:
             print("Unreal email!!")
             
 user = User("Angelo", "20-03-2009", "nshutijoseph34@gmai.com")
-user.email = "nshuti"
+user.email = "bana@gmail.com"
 print(user.email)
