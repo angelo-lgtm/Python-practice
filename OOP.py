@@ -26,4 +26,6 @@ dog.bark()
 print(dog.breed)
 
 #This way is not recommended in Python development instead we have to use getters and setters to do this operation.
-print(owner._address) 
+print(owner._address)
+#Instead we should use this way below
+print(owner.get_address()) 
