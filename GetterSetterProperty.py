@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class User:
-    def __init__(self, name, dob, email):
+    def __init__(self, name: str, dob: str, email: str):
         self.name = name
         self.dob = dob
         self._email = email
@@ -11,7 +11,7 @@ class User:
         return self._email
     
     @email.setter
-    def email(self, new_email):
+    def email(self, new_email: str):
         if "@" in new_email:
             self._email = new_email
             print(f"Email formatted at {datetime.now()}")
@@ -22,7 +22,7 @@ class Employee:
     #Static attribute 
     e_count = 0
     
-    def __init__(self, user, department):
+    def __init__(self, user: User, department: str):
             self.user = user
             self.department = department
             #Use of static attribute within a class
@@ -34,32 +34,32 @@ class Employee:
 class BankAccount:
     balance = 0
     
-    def __init__(self, employee):
+    def __init__(self, employee: Employee):
         self.employee = employee
         Bank.total_accounts()
     
     #Private method created by prefixing the name of method by 2 underscores
-    def __log_transaction(self, type, amount):
+    def __log_transaction(self, type: str, amount: int):
         if type == "withdraw":
             self.balance -= amount
         else:
             self.balance += amount
     
     #Procted method created by prefixing the name of method by 1 underscore        
-    def _is_valid_amount(self, amount):
+    def _is_valid_amount(self, amount: int):
         return amount > 0
     
-    def deposit(self, amount):
+    def deposit(self, amount: int):
         if self._is_valid_amount(amount):
             self.__log_transaction("deposit", amount)
             print(f"The amount of {amount} has been deposited into {self.employee.user.name}'s account.")
         else:
             print("Transactino failed!")
             
-    def withdraw(self, amount):
+    def withdraw(self, amount: int):
         if self._is_valid_amount(amount) and amount <= self.balance:
             self.__log_transaction("withdraw", amount)
-            print(f"The amount of {amount} has been withdrawn from {employee.user.name}'s account.")
+            print(f"The amount of {amount} has been withdrawn from {self.employee.user.name}'s account.")
         else:
             print("Transaction failed!")
 
